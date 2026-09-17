@@ -1,0 +1,177 @@
+/* File: style.css */
+:root { 
+    --primary-color: #e60000; 
+    --badge-new: #28a745; 
+    --badge-word: #0056b3; 
+    --badge-pdf: #dc3545; 
+}
+
+body { 
+    font-family: Arial, sans-serif; 
+    margin: 0; 
+    background-color: #f4f6f9; 
+    color: #333; 
+}
+
+.d10-header { 
+    background: #fff; 
+    padding: 15px 30px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+    position: sticky; 
+    top: 0; 
+    z-index: 50;
+}
+
+.d10-header-top { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    flex-wrap: wrap; 
+    gap: 15px; 
+}
+
+.d10-search-bar { 
+    display: flex; 
+    gap: 5px; 
+    flex-grow: 0.5; 
+    min-width: 300px; 
+}
+
+.d10-search-bar input { 
+    width: 100%; 
+    padding: 8px 12px; 
+    border: 1px solid #ddd; 
+    border-radius: 4px; 
+}
+
+.d10-search-bar button { 
+    background: var(--primary-color); 
+    color: white; 
+    border: none; 
+    padding: 8px 15px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-weight: bold;
+}
+
+.d10-nav { 
+    background: var(--primary-color); 
+    margin-top: 15px; 
+    border-radius: 4px; 
+    overflow-x: auto;
+}
+
+.d10-nav ul { 
+    list-style: none; 
+    padding: 0; 
+    margin: 0; 
+    display: flex; 
+    white-space: nowrap; 
+}
+
+.d10-nav ul li a { 
+    display: block; 
+    padding: 12px 20px; 
+    color: white; 
+    text-decoration: none; 
+    font-weight: bold; 
+}
+
+.d10-nav ul li:hover { background: #cc0000; }
+
+.d10-main { 
+    display: flex; 
+    max-width: 1200px; 
+    margin: 20px auto; 
+    gap: 20px; 
+    padding: 0 15px; 
+    flex-wrap: wrap; 
+}
+
+.d10-sidebar { 
+    width: 280px; 
+    background: #fff; 
+    padding: 15px; 
+    border-radius: 8px; 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); 
+    height: fit-content; 
+    flex-shrink: 0; 
+}
+
+.d10-filter-group { 
+    margin-bottom: 20px; 
+    border-bottom: 1px solid #eee; 
+    padding-bottom: 15px; 
+}
+
+.d10-filter-group h3 { 
+    font-size: 16px; 
+    margin-top: 0; 
+    color: var(--primary-color); 
+}
+
+.d10-content { 
+    flex: 1; 
+    min-width: 0; 
+}
+
+.d10-doc-card { 
+    background: #fff; 
+    padding: 15px; 
+    border-radius: 8px; 
+    margin-bottom: 15px; 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); 
+    transition: transform 0.2s; 
+    border-bottom: 3px solid transparent;
+}
+
+.d10-doc-card:hover { 
+    transform: translateY(-2px); 
+    border-bottom-color: var(--primary-color); 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.d10-badges { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 8px; 
+    margin-bottom: 10px; 
+    font-size: 12px; 
+    font-weight: bold; 
+}
+
+.badge { padding: 3px 8px; border-radius: 3px; color: white; }
+.badge.new { background: var(--badge-new); }
+.badge.word { background: var(--badge-word); }
+.badge.pdf { background: var(--badge-pdf); }
+.badge.matran { background: #ffc107; color: #000; }
+
+.d10-trending { 
+    background: #fff9e6; 
+    padding: 10px; 
+    border-radius: 5px; 
+    border-left: 4px solid #ffc107; 
+}
+
+.d10-trending ul { padding-left: 20px; font-size: 14px; margin: 0; }
+.d10-trending li { margin-bottom: 8px; }
+
+/* Modal Style */
+.modal-overlay { 
+    display: none; 
+    position: fixed; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%; 
+    background: rgba(0,0,0,0.5); 
+    z-index: 1000; 
+}
+
+.modal-content { 
+    background: #fff; 
+    width: 90%; 
+    max-width: 400px; 
+    margin: 100px auto; 
+    padding: 20px; 
+    border-radius: 8px; 
+    text-align: center; 
+}

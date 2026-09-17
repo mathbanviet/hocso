@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cổng Học Liệu & Đề Thi - Điểm 10+ (Portal Beta)</title>
+    
+    <link href="about:invalid#zCSafez" rel="icon" type="image/svg+xml">
+    
+    <!-- Nhúng file CSS (Định dạng giao diện) -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="d10-header">
+    <div class="d10-header-top">
+        <div class="d10-logo-title" style="display: flex; align-items: center; gap: 15px;">
+            <a href="index.html" title="Hệ Thống Điểm 10+" style="text-decoration: none;">
+                <div style="width: 50px; height: 50px; background: var(--primary-color); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; border-radius: 5px; font-size: 18px;">10+</div>
+            </a>
+            <div>
+                <h1 style="margin: 0; font-size: 20px; color: var(--primary-color);">Cổng Học Liệu & Đề Thi</h1>
+                <p style="margin: 0; font-size: 13px; color: #666;">Hệ thống 7 cơ sở · GDPT 2018</p>
+            </div>
+        </div>
+
+        <div class="d10-search-bar">
+            <input type="text" id="searchInput" placeholder="Tìm kiếm nhanh đề thi, môn, bài (VD: đề test toán 7...)">
+            <button id="searchBtn" onclick="executeSearch()">Tìm kiếm</button>
+        </div>
+
+        <div class="d10-user-actions">
+            <span style="font-weight: bold; color: #555;">👤 Học Sinh & Phụ Huynh</span>
+            <button onclick="document.getElementById('modal-teacher').style.display='block'" style="margin-left: 10px; padding: 8px 15px; background: #333; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">🔐 Giáo Viên</button>
+        </div>
+    </div>
+
+    <!-- MEGA MENU -->
+    <nav class="d10-nav">
+        <ul>
+            <li><a href="#" onclick="renderDocuments(DEMO_DATA)">Trang chủ</a></li>
+            <li><a href="#">Toán 10</a></li>
+            <li><a href="#">Toán 11</a></li>
+            <li><a href="#">Toán 12</a></li>
+            <li><a href="#">🔥 Luyện Thi THPT QG</a></li>
+            <li><a href="#">🎯 Đề Thi ĐGNL</a></li>
+            <li><a href="#">💡 Toán Thực Tế (GDPT 2018)</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="d10-main">
+    
+    <!-- SIDEBAR BỘ LỌC -->
+    <aside class="d10-sidebar">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2 style="font-size: 18px; margin-top: 0; color: #333;">Bộ lọc tài liệu</h2>
+            <button onclick="renderDocuments(DEMO_DATA)" style="background:none; border:none; color: var(--primary-color); cursor:pointer; font-size: 12px; text-decoration: underline;">Đặt lại</button>
+        </div>
+
+        <div class="d10-filter-group">
+            <h3>📚 Bộ sách GDPT 2018</h3>
+            <label style="display: block; margin-bottom: 5px;"><input type="checkbox" value="thong-nhat"> Thống nhất</label>
+            <label style="display: block; margin-bottom: 5px;"><input type="checkbox" value="ket-noi"> Kết nối tri thức</label>
+            <label style="display: block; margin-bottom: 5px;"><input type="checkbox" value="chan-troi"> Chân trời sáng tạo</label>
+            <label style="display: block; margin-bottom: 5px;"><input type="checkbox" value="canh-dieu"> Cánh diều</label>
+        </div>
+
+        <div class="d10-filter-group">
+            <h3>🎓 Khối lớp</h3>
+            <label style="display: block; margin-bottom: 5px;"><input type="radio" name="khoi" value="cap1"> Cấp 1 (Lớp 1-5)</label>
+            <label style="display: block; margin-bottom: 5px;"><input type="radio" name="khoi" value="cap2"> Cấp 2 (Lớp 6-9)</label>
+            <label style="display: block; margin-bottom: 5px;"><input type="radio" name="khoi" value="cap3"> Cấp 3 (Lớp 10-12)</label>
+        </div>
+
+        <div class="d10-filter-group">
+            <h3>📑 Danh mục tài liệu</h3>
+            <label style="display: block; margin-bottom: 5px;"><input type="checkbox" value="Đề test đầu vào"> Đề Test 4-in-1</label>
+            <label style="display: block; margin-bottom: 5px;"><input type="checkbox" value="Sách giáo khoa"> Sách Giáo Khoa (Bộ GD)</label>
+            <label style="display: block; margin-bottom: 5px;"><input type="checkbox" value="Tài liệu học tập"> Sách chính khóa Điểm 10+</label>
+        </div>
+
+        <div class="d10-trending">
+            <h3 style="color: #b38000; margin-top:0;">🔥 Xem nhiều tháng này</h3>
+            <ul>
+                <li><a href="#" style="color: #333; text-decoration: none;">Tổng ôn Đại số 12 - KNTT</a></li>
+                <li><a href="#" style="color: #333; text-decoration: none;">Bộ 5 đề ĐGNL HCM 2026</a></li>
+                <li><a href="#" style="color: #333; text-decoration: none;">100 Bài Toán Thực Tế Lớp 9</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <div class="d10-content">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; border-bottom: 2px solid #eee; padding-bottom: 10px;">
+            <div>
+                <h2 style="margin: 0; color: #333;">Kho Học Liệu & Đề Thi</h2>
+                <p style="margin: 5px 0 0 0; color: var(--primary-color); font-weight: bold;">Hiển thị <span id="countDisplay">0</span> tài liệu bám sát chương trình</p>
+            </div>
+            <select id="sortSelect" title="Sắp xếp danh sách tài liệu" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; font-weight: bold; color: #555;">
+                <option value="newest">Sắp xếp: Mới cập nhật nhất</option>
+                <option value="name_asc">Tên tài liệu A → Z</option>
+                <option value="name_desc">Tên tài liệu Z → A</option>
+            </select>
+        </div>
+
+        <div id="data-container">
+            <p style="text-align: center; padding: 40px; color: #666;">Đang nạp dữ liệu từ hệ thống...</p>
+        </div>
+
+        <div id="pagination" style="text-align: center; margin-top: 30px; display: none;">
+            <button style="padding: 8px 15px; border: 1px solid #ccc; background: #fff; cursor: pointer; border-radius: 4px;">&laquo; Tải thêm tài liệu</button>
+        </div>
+    </div>
+</main>
+
+<footer style="background: #333; color: white; text-align: center; padding: 30px 20px; margin-top: 40px; border-top: 4px solid var(--primary-color);">
+    <div>
+        <h3 style="margin: 0 0 10px 0;">Hệ Thống Trung Tâm Bồi Dưỡng Văn Hóa Điểm 10+</h3>
+        <p style="margin: 5px 0; font-size: 14px; color: #aaa;">Cổng tra cứu học liệu nội bộ phục vụ Học sinh – Giáo viên – Phụ huynh</p>
+        <p style="margin: 10px 0 0 0; font-size: 16px;">Hotline Hỗ Trợ 24/7: <strong style="color: #ffc107;">0933 39 8787</strong></p>
+    </div>
+</footer>
+
+<!-- MODAL XÁC THỰC GIÁO VIÊN -->
+<div id="modal-teacher" class="modal-overlay">
+    <div class="modal-content">
+        <h3 style="color: var(--primary-color); margin-top: 0;">Xác thực Giáo viên Điểm 10+</h3>
+        <p style="font-size: 14px; line-height: 1.5; color: #555;">Nhập mã PIN do Phòng Đào Tạo cấp để tải bản <strong>Word</strong>, xem trọn bộ <strong>Đáp án chi tiết (SP3)</strong>, Barem chẩn đoán và <strong>Ma trận đặc tả</strong>.</p>
+        <input type="password" id="pinInput" placeholder="Nhập mã PIN (VD: 10plus)" style="width: 80%; padding: 10px; margin: 15px 0; text-align: center; font-size: 18px; border: 1px solid #ccc; border-radius: 4px; outline: none;">
+        <br>
+        <button onclick="alert('Đã mở khóa tính năng Giáo Viên!'); document.getElementById('modal-teacher').style.display='none';" style="background: var(--primary-color); color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; width: 40%;">Xác Nhận</button>
+        <button onclick="document.getElementById('modal-teacher').style.display='none'" style="background: #eee; color: #333; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; margin-left: 10px; font-weight: bold; width: 40%;">Đóng</button>
+    </div>
+</div>
+
+<!-- Nhúng file Dữ liệu (Load trước) -->
+<script src="data.js"></script>
+<!-- Nhúng file Logic xử lý JS (Load sau cùng) -->
+<script src="app.js"></script>
+
+</body>
+</html>
